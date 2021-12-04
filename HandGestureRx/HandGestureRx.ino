@@ -8,8 +8,8 @@ RF24 radio(9, 10);
 const uint64_t addresses[2] = {0xF0F0F0F0E1LL, 0xF0F0F0F0D2LL};
 
 struct data {
-  float xAxis;
-  float yAxis;
+  int xAxis;
+  int yAxis;
 };
 data receive_data;
 void setup() {
