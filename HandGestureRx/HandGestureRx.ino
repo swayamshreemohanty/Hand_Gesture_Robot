@@ -52,7 +52,6 @@ void forward(int pwmOutput)
   digitalWrite(m12, LOW);
   digitalWrite(m21, LOW);
   digitalWrite(m22, HIGH);
-  Serial.println(pwmOutput);
   analogWrite(LeftMotorSpeed, pwmOutput);
   analogWrite(RightMotorSpeed, pwmOutput);
 }
@@ -76,6 +75,7 @@ void backward(int pwmOutput)
 }
 void turnleft(int pwmOutput)
 {
+
   digitalWrite(m11, LOW);
   digitalWrite(m12, HIGH);
   digitalWrite(m21, LOW);
@@ -85,6 +85,7 @@ void turnleft(int pwmOutput)
 }
 void Stop()
 {
+
   digitalWrite(m11, LOW);
   digitalWrite(m12, LOW);
   digitalWrite(m21, LOW);
@@ -96,7 +97,7 @@ void drive(data receivedData) {
   {
     forward(speed_control(receivedData.xAxis, -5, -40));
   }
-  else if (receivedData.xAxis > 5 && receivedData.xAxis != -90 && receivedData.yAxis != 90)
+  else if (receivedData.xAxis > 10 && receivedData.xAxis != -90 && receivedData.yAxis != 90)
   {
     backward(speed_control(receivedData.xAxis, 5, 40));
   }
@@ -122,13 +123,11 @@ void loop() {
     uint8_t len = radio.getDynamicPayloadSize();
     //Read the received RF data.
     radio.read(&receive_data, len);
-
     //print the debug data
     //    Serial.print("accAngleX :     ");
     //    Serial.println(receive_data.xAxis);
     //    Serial.print("\taccAngleY :    ");
     //    Serial.println(receive_data.yAxis);
-
     //To drive the CAR
     drive(receive_data);
   }
