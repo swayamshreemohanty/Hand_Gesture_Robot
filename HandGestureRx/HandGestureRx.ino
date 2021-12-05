@@ -103,11 +103,11 @@ void drive(data receivedData) {
   }
   else if (receivedData.yAxis < -5 && receivedData.xAxis != -90 && receivedData.yAxis != 90)
   {
-    turnleft(speed_control(receivedData.yAxis, -5, -40));
+    turnleft(speed_control(receivedData.yAxis, -5, -60));
   }
   else if (receivedData.yAxis > 5 && receivedData.xAxis != -90 && receivedData.yAxis != 90)
   {
-    turnright(speed_control(receivedData.yAxis, 5, 40));
+    turnright(speed_control(receivedData.yAxis, 5, 60));
   }
   else if (receivedData.xAxis == -90 && receivedData.yAxis == 90)
   {
