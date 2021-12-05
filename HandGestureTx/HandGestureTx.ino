@@ -19,6 +19,8 @@ data send_data;
 void setup() {
   Serial.begin(9600);
   Wire.begin();
+  digitalWrite (A4, LOW);
+  digitalWrite (A5, LOW);
   mpu6050.begin();
   mpu6050.calcGyroOffsets(true);
   printf_begin();

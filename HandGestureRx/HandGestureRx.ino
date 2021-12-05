@@ -124,10 +124,10 @@ void loop() {
     //Read the received RF data.
     radio.read(&receive_data, len);
     //print the debug data
-    //    Serial.print("accAngleX :     ");
-    //    Serial.println(receive_data.xAxis);
-    //    Serial.print("\taccAngleY :    ");
-    //    Serial.println(receive_data.yAxis);
+    //        Serial.print("accAngleX :     ");
+    //        Serial.println(receive_data.xAxis);
+    //        Serial.print("\taccAngleY :    ");
+    //        Serial.println(receive_data.yAxis);
     //To drive the CAR
     drive(receive_data);
   }

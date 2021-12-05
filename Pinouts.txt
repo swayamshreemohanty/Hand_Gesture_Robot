@@ -1,9 +1,9 @@
 Left Motor:
+D3(PWM)
 D2
-D3
-A6
+D4
 
 Right Motor:
-D4
-D5
-A7
+D6
+D7
+D5(PWM)
