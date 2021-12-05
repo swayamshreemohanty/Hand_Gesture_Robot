@@ -1,0 +1,9 @@
+Left Motor:
+D2
+D3
+A6
+
+Right Motor:
+D4
+D5
+A7
