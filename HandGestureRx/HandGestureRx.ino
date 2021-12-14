@@ -92,9 +92,22 @@ void Stop()
   digitalWrite(m22, LOW);
 }
 
+//Control the speed according to the angle
+int speed_control(int currentAngleValue, int min_angle, int max_angle )
+{
+  int pwmValue = map(currentAngleValue, min_angle, max_angle, 50, 255);
+  if (pwmValue <= 255) {
+    return pwmValue;
+  } else {
+    return 255;
+  }
+}
+
+
 void drive(data receivedData) {
   if (receivedData.xAxis < -5 && receivedData.xAxis != -90 && receivedData.yAxis != 90)
   {
+    
     forward(speed_control(receivedData.xAxis, -5, -40));
   }
   else if (receivedData.xAxis > 10 && receivedData.xAxis != -90 && receivedData.yAxis != 90)
@@ -118,6 +131,8 @@ void drive(data receivedData) {
   }
 }
 
+
+
 void loop() {
   while (radio.available()) {
     uint8_t len = radio.getDynamicPayloadSize();
@@ -133,13 +148,3 @@ void loop() {
   }
 }
 
-//Control the speed according to the angle
-int speed_control(int currentAngleValue, int min_angle, int max_angle )
-{
-  int pwmValue = map(currentAngleValue, min_angle, max_angle, 50, 255);
-  if (pwmValue <= 255) {
-    return pwmValue;
-  } else {
-    return 255;
-  }
-}
